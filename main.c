@@ -4,9 +4,11 @@
 // Eduarod Moreno Lamana
 // http://apuntes.eduardofilo.es/2016/08/02/stm32-vl-discovery.html
 //=============================================================================
-# include <stm32f10x.h>
-# include <stm32f10x_rcc.h>
-# include <stm32f10x_gpio.h>
+#include <stm32f10x.h>
+#include <stm32f10x_rcc.h>
+#include <stm32f10x_gpio.h>
+
+#define BLUE_LED_PIN GPIO_Pin_8
 
 void Delay( uint32_t nTime );
 
@@ -18,7 +20,7 @@ int main(void) {
 
     // Configure Pins
     GPIO_StructInit(& GPIO_InitStructure);
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+    GPIO_InitStructure.GPIO_Pin = BLUE_LED_PIN;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
     GPIO_InitStructure.GPIO_Speed = GPIO_Speed_2MHz;
     GPIO_Init(GPIOC, & GPIO_InitStructure);
@@ -30,7 +32,7 @@ int main(void) {
     while (1) {
         static int ledval = 0;
         // toggle led
-        GPIO_WriteBit (GPIOC, GPIO_Pin_9, (ledval) ? Bit_SET : Bit_RESET);
+        GPIO_WriteBit (GPIOC, BLUE_LED_PIN, (ledval) ? Bit_SET : Bit_RESET);
         ledval = 1 - ledval;
         Delay (250);
         // wait 250 ms
