@@ -1,0 +1,11 @@
+startup_stm32f10x.o
+startup_stm32f10x.d
+system_stm32f10x.o
+system_stm32f10x.d
+main.o
+main.d
+stm32f10x_gpio.o
+stm32f10x_gpio.d
+stm32f10x_rcc.o
+stm32f10x_rcc.d
+stm32-vl-discovery-blinking-led.elf
